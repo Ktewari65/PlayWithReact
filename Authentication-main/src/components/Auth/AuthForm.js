@@ -1,13 +1,22 @@
-import { useState, useRef } from 'react';
-
+import { useState, useRef, useContext } from 'react';
+import AuthContext from '../../Store/AuthContext';
 import classes from './AuthForm.module.css';
 
+import { useNavigate } from 'react-router-dom';
+
+
 const AuthForm = () => {
+ 
+const History = useNavigate()
 
   const emailInputRef = useRef()
   const passwordInputRef = useRef()
   const [isLogin, setIsLogin] = useState(true);
   const[isLoading,setIsLoading] = useState(false)
+
+  
+
+  const authctx = useContext(AuthContext)
 
   const switchAuthModeHandler = () => {
    
@@ -45,14 +54,20 @@ const AuthForm = () => {
       else{
         return response.json().then((data) =>{
           const errormessage = data.error.message;
-       console.log(errormessage)
+       //console.log(errormessage)
           throw new Error(errormessage)
          
         })
         
       }
-   }).then((data) =>
-   {console.log(data)}).catch((err) => err.message)
+   })
+   .then((data) =>
+   {
+    authctx.login(data.idToken)
+    History('/')
+})
+   
+   .catch((err) => err.message)
   
   }
 
