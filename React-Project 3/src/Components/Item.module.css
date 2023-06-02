@@ -1,0 +1,13 @@
+.list {
+    position: relative;
+    border-radius: 2px black;
+    background-color: red;
+    padding-top: 20px;
+    margin-right: 1000px;
+    margin-top: 10px;
+    
+}
+
+.button{
+    background-color: brown;
+}

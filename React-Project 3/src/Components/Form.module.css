@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .box {
+    display: inline-block;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    background: brown;
+    color: black;
+  }
+  
